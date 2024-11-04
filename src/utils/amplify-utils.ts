@@ -1,6 +1,6 @@
 import { createServerRunner } from "@aws-amplify/adapter-nextjs";
 
-import config from "@/../amplify_outputs.json";
+import config from "../../amplify_outputs.json";
 import { getCurrentUser } from "aws-amplify/auth/server";
 import { cookies } from "next/headers";
 import { generateServerClientUsingCookies } from "@aws-amplify/adapter-nextjs/data";
