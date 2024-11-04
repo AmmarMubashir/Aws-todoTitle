@@ -9,7 +9,6 @@ import { Schema } from "../../amplify/data/resource";
 export const cookieBasedClient = generateServerClientUsingCookies<Schema>({
   config,
   cookies: () => cookies(),
-  authMode: "userPool",
 });
 
 export const { runWithAmplifyServerContext } = createServerRunner({
