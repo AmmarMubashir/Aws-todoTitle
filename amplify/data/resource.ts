@@ -15,7 +15,10 @@ const schema = a.schema({
         .string()
         .authorization((allow) => [allow.owner().to(["read", "delete"])]),
     })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.owner().to(["read"]),
+    ]),
   Comment: a
     .model({
       content: a.string().required(),
