@@ -1,14 +1,13 @@
-import { cookieBasedClient } from "@/utils/amplify-utils";
+import { cookieBasedClient, isAuthenticated } from "@/utils/amplify-utils";
 
 export default async function Home() {
-  // const { data: posts } = await cookieBasedClient.models.Post.list({
-  //   selectionSet: ["title", "id"],
-  //   authMode: "apiKey",
-  // });
+  const isSignedIn = await isAuthenticated();
+  const { data: posts } = await cookieBasedClient.models.Post.list({
+    selectionSet: ["title", "id"],
+    authMode: isSignedIn ? "userPool" : "identityPool",
+  });
 
-  const { data: posts, errors } = await cookieBasedClient.models.Post.list();
-  console.log("Fetched posts:", posts, errors);
-  // console.log("POST", posts);
+  console.log("POST", posts);
   return (
     <main className="flex flex-col justify-between items-center p-24 w-1/2 m-auto gap-4">
       <h1 className="text-2xl pb-10">List Of All Titles</h1>

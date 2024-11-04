@@ -17,8 +17,8 @@ const Navbar = ({ isSignedIn }: { isSignedIn: boolean }) => {
       switch (data.payload.event) {
         case "signedIn":
           setAuthCheck(true);
-          // startTransition(() => router.push("/"));
-          startTransition(() => router.refresh());
+          startTransition(() => router.push("/"));
+          // startTransition(() => router.refresh());
           break;
         case "signedOut":
           setAuthCheck(false);
